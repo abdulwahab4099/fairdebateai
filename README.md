@@ -1,36 +1,80 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# Autonomous Debate Engine
 
-## Getting Started
+A structured AI debate orchestration system powered by Google Gemini API and Agentic Development Kit.
 
-First, run the development server:
+## Architecture
 
-```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
+### Admin Orchestrator (The Brain)
+The system is governed by an Admin Orchestrator that:
+- Designs debate agents with unique personalities
+- Assigns fixed stances (Pro, Con, Neutral)
+- Enforces strict structure and word limits
+- Runs sequential debate rounds
+- Triggers analytical evaluation
+- Produces balanced final summary
+
+### System Flow
+```
+User Topic Input
+    ↓
+Admin Agent Activated
+    ↓
+Agent Creation Phase (3 agents)
+    ↓
+Round 1: Opening Arguments (80-100 words)
+    ↓
+Round 2: Rebuttals (70-90 words)
+    ↓
+Round 3: Closing Statements (60-80 words)
+    ↓
+Analysis Phase (Scoring & Winner)
+    ↓
+Final Summary (120 words max)
+    ↓
+Structured JSON Response
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+## Setup
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+1. Install dependencies:
+```bash
+npm install
+```
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+2. Configure Gemini API:
+Create `.env.local` file:
+```
+GEMINI_API_KEY=your_gemini_api_key_here
+```
 
-## Learn More
+Get your API key from: https://makersuite.google.com/app/apikey
 
-To learn more about Next.js, take a look at the following resources:
+3. Run development server:
+```bash
+npm run dev
+```
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+4. Open http://localhost:3000
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+## Features
 
-## Deploy on Vercel
+- **Deterministic Structure**: Temperature ~0.6 for consistent formatting
+- **Strict Word Limits**: Enforced at each debate round
+- **Unique Agent Personalities**: No duplication allowed
+- **Sequential AI Calls**: Better control and debugging
+- **Analytical Scoring**: Logic, Evidence, Rebuttal, Clarity (0-10 each)
+- **JSON-Ready Output**: Direct UI rendering without manual fixes
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+## Tech Stack
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+- Next.js 16 (App Router)
+- TypeScript
+- Google Gemini API (@google/genai)
+- Tailwind CSS
+- React 19
+
+## Competitive Advantage
+
+This isn't just "AI debate" - it's **structured, disciplined, controlled AI debate orchestration**.
+
+Most systems show chaotic GPT outputs. This system shows a governed, reproducible debate framework.
