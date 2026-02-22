@@ -11,7 +11,7 @@ export const ai = new GoogleGenAI({
 
 export const MODEL_NAME = 'gemini-2.5-flash';
 
-export const generateContent = async (prompt: string) => {
+export const generateContent = async (prompt: string): Promise<string> => {
   const response = await ai.models.generateContent({
     model: MODEL_NAME,
     contents: prompt,
@@ -22,5 +22,10 @@ export const generateContent = async (prompt: string) => {
       maxOutputTokens: 8192,
     },
   });
+  
+  if (!response.text) {
+    throw new Error('No response text received from Gemini API');
+  }
+  
   return response.text;
 };
